@@ -1,0 +1,54 @@
+schema: '2.0'
+stages:
+  data_download:
+    cmd: python src/stages/data_download.py
+    deps:
+    - path: src/configs/config.yaml
+      hash: md5
+      md5: 7ed2ed95b8cc17dd7475760f9c568181
+      size: 432
+    - path: src/stages/data_download.py
+      hash: md5
+      md5: 6b7c3376dbbaacb289fa43c8b0255ed7
+      size: 858
+    outs:
+    - path: ./data/initial_data/initial_data.csv
+      hash: md5
+      md5: 8c41e867828abaaae069d72196364740
+      size: 94753
+    - path: ./data/initial_data/target.csv
+      hash: md5
+      md5: 9aec989816b3961d7bb5ecadc0a47964
+      size: 4614
+  data_prepare:
+    cmd: python src/stages/data_prepare.py
+    deps:
+    - path: src/configs/config.yaml
+      hash: md5
+      md5: 7ed2ed95b8cc17dd7475760f9c568181
+      size: 432
+    - path: src/stages/data_prepare.py
+      hash: md5
+      md5: 8bd70fe5940feaf18a0db76a29e39d12
+      size: 747
+    outs:
+    - path: ./data/prepared_data/prepared_data.csv
+      hash: md5
+      md5: f71f03d82fe37e2d1ee2a87bf71a1df6
+      size: 89109
+  training:
+    cmd: python src/stages/model_train.py
+    deps:
+    - path: src/configs/config.yaml
+      hash: md5
+      md5: 7ed2ed95b8cc17dd7475760f9c568181
+      size: 432
+    - path: src/stages/model_train.py
+      hash: md5
+      md5: ab5f285d8d23161b4a5058baba98469e
+      size: 2028
+    outs:
+    - path: ./models/linear_model.pickle
+      hash: md5
+      md5: 6ae9324c4ba8f7d5b6370263a1634e86
+      size: 866

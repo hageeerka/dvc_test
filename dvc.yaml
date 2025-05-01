@@ -1,0 +1,28 @@
+stages:
+  data_download:
+    cmd: python src/stages/data_download.py
+    deps:
+    - src/stages/data_download.py
+    - src/configs/config.yaml
+    outs:
+    - ./data/initial_data/initial_data.csv
+    - ./data/initial_data/target.csv
+  data_prepare:
+    cmd: python src/stages/data_prepare.py
+    deps:
+    - src/stages/data_prepare.py
+    - src/configs/config.yaml
+    outs:
+    - ./data/prepared_data/prepared_data.csv
+  training:
+    cmd: python src/stages/model_train.py
+    deps:
+    - src/stages/model_train.py
+    - src/configs/config.yaml
+    outs:
+    - ./models/linear_model.pickle
+metrics:
+- dvclive/metrics.json
+plots:
+- dvclive/plots/metrics:
+    x: step

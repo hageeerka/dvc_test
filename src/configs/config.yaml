@@ -1,0 +1,19 @@
+featurize:
+  features_path: "./data/final.csv"
+
+path:
+  features_path: "./data/initial_data/initial_data.csv"
+  target_path: "./data/initial_data/target.csv"
+
+data_load:
+  dataset_load: "./data/initial_data/initial_data.csv"
+  dataset_save: "./data/prepared_data/prepared_data.csv"
+
+train_config:
+    seed: 1
+    test_size: 0.4
+    validation_size: 0.1
+  
+models_save:
+  path: "./models/linear_model.pickle"
+    
